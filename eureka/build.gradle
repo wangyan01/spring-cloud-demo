@@ -1,0 +1,65 @@
+buildscript {
+	repositories {
+	    maven {url "https://maven.aliyun.com/repository/spring"}
+	    maven {url "https://maven.aliyun.com/repository/jcenter"}
+	    maven {url "https://maven.aliyun.com/repository/spring-plugin"}
+	    maven {url "https://maven.aliyun.com/repository/public"}
+	    maven {url "https://maven.aliyun.com/repository/central"}
+	      
+	    maven { url 'https://repo.spring.io/release/' }
+	    maven { url "http://repo.spring.io/libs-snapshot-local" }
+	    maven { url "http://repo.spring.io/libs-milestone-local" }
+	    maven { url "http://repo.spring.io/libs-release-local" }
+	}
+   dependencies{
+		 classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.10.RELEASE")
+	}
+}
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'eclipse'
+
+ext {
+    name = 'Eureka Server'
+    description = 'Eureka Server demo project' 
+    version='0.0.1-SNAPSHOT'
+    sourceEncoding='UTF-8'
+    mysqlVersion = "5.1.39"
+	springBootVersion = "1.5.10.RELEASE"
+	springCloudVersion = "Edgware.SR2"
+}
+
+dependencyManagement {
+     imports {
+           mavenBom "org.springframework.cloud:spring-cloud-dependencies:Edgware.SR2"
+     }
+}
+
+
+dependencies {
+    compile("org.springframework.boot:spring-boot:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-parent:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-autoconfigure:${springBootVersion}")
+    //compile("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
+    compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+    compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+   
+}
+
+
+repositories {
+    maven {url "https://maven.aliyun.com/repository/spring"}
+    maven {url "https://maven.aliyun.com/repository/jcenter"}
+    maven {url "https://maven.aliyun.com/repository/spring-plugin"}
+    maven {url "https://maven.aliyun.com/repository/public"}
+    maven {url "https://maven.aliyun.com/repository/central"}
+      
+    maven { url 'https://repo.spring.io/release/' }
+    maven { url "http://repo.spring.io/libs-snapshot-local" }
+    maven { url "http://repo.spring.io/libs-milestone-local" }
+    maven { url "http://repo.spring.io/libs-release-local" }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.1'
+}
