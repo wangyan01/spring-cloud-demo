@@ -1,0 +1,63 @@
+buildscript{
+	repositories {
+	    maven {url "https://maven.aliyun.com/repository/spring"}
+	    maven {url "https://maven.aliyun.com/repository/jcenter"}
+	    maven {url "https://maven.aliyun.com/repository/spring-plugin"}
+	    maven {url "https://maven.aliyun.com/repository/public"}
+	    maven {url "https://maven.aliyun.com/repository/central"}
+	      
+	    maven { url 'https://repo.spring.io/release/' }
+	    maven { url "http://repo.spring.io/libs-snapshot-local" }
+	    maven { url "http://repo.spring.io/libs-milestone-local" }
+	    maven { url "http://repo.spring.io/libs-release-local" }
+	}
+	dependencies{
+		 classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+jar {
+	baseName = 'demo.movie'
+	version = '1.0.0'
+}
+
+dependencyManagement {
+     imports {
+           mavenBom "org.springframework.cloud:spring-cloud-dependencies:Edgware.SR2"
+     }
+}
+
+
+repositories {
+	    maven {url "https://maven.aliyun.com/repository/spring"}
+	    maven {url "https://maven.aliyun.com/repository/jcenter"}
+	    maven {url "https://maven.aliyun.com/repository/spring-plugin"}
+	    maven {url "https://maven.aliyun.com/repository/public"}
+	    maven {url "https://maven.aliyun.com/repository/central"}
+	      
+	    maven { url 'https://repo.spring.io/release/' }
+	    maven { url "http://repo.spring.io/libs-snapshot-local" }
+	    maven { url "http://repo.spring.io/libs-milestone-local" }
+	    maven { url "http://repo.spring.io/libs-release-local" }
+	}
+
+ext{
+
+	mysqlVersion = "5.1.39"
+	springBootVersion = "1.5.9.RELEASE"
+	springCloudVersion = "Edgware.SR2"
+}
+
+dependencies{
+	compile("org.springframework.boot:spring-boot-starter-parent:${springBootVersion}")
+	compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+	compile("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}")
+	compile("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
+	compile("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
+	compile("mysql:mysql-connector-java:${mysqlVersion}")
+	compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+}
