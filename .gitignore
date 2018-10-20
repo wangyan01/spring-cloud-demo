@@ -29,6 +29,7 @@ target/
 
 .settings/
 .project
+.gradle
 .classpath
 *.bak
 .DS_Store
