@@ -9,3 +9,4 @@ target/
 *.bak
 .DS_Store
 !/.project
+/.project
