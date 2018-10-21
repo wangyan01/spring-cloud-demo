@@ -14,17 +14,17 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping("/users")
+	@GetMapping("/")
 	public Object getAll(){
 		return userService.getAll();
 	}
 	
-	@GetMapping(value = "/users/{id}")
+	@GetMapping(value = "/{id}")
 	public Object getAll(@PathVariable("id") String id){
 		return userService.getById(Long.parseLong(id));
 	}
 	
-	@GetMapping(value = "/users/add")
+	@GetMapping(value = "/add")
 	public Object insert(){
 		User user = new User();
 		int num = (int)(Math.random()*100);
