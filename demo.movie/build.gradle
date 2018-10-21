@@ -29,19 +29,22 @@ repositories {
 
 ext{
 
-	mysqlVersion = "5.1.39"
+	mysqlVersion = "5.1.38"
 	springBootVersion = "1.5.13.RELEASE"
 	springCloudVersion = "Edgware.SR5"
+	springVersion = "4.3.17.RELEASE"
+	hibernateVersion = "5.0.12.Final"
 }
 
 dependencies{
 	compile("org.springframework.boot:spring-boot-starter:${springBootVersion}")
 	compile("org.springframework.boot:spring-boot-starter-parent:${springBootVersion}")
 	compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
-	compile("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}")
 	compile("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
 	compile("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
 	compile("mysql:mysql-connector-java:${mysqlVersion}")
 	compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 	compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+	compile ("org.springframework:spring-orm:${springVersion}")
+	compile("org.hibernate:hibernate-core:${hibernateVersion}")
 }
